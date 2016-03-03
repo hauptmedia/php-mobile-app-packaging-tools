@@ -1,0 +1,20 @@
+{
+  "name": "hauptmedia/mobile-app-packaging-tools",
+  "type": "library",
+  "homepage": "https://github.com/hauptmedia/php-mobile-app-packaging-tools",
+  "license": "MIT",
+  "autoload": {
+    "psr-0": {
+      "MobileAppPackagingTools": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Julian Haupt",
+      "email": "julian.haupt@hauptmedia.de"
+    }
+  ],
+  "require": {
+    "rodneyrehm/plist": "^2.0"
+  }
+}
