@@ -79,6 +79,11 @@ class IPAPackage {
         $this->za->close();
     }
 
+    public function extractProvisionedDevices() {
+        $provisioningProfile = $this->extractProvisioningProfile();
+        return $provisioningProfile['ProvisionedDevices'];
+    }
+
     public function extractProvisioningProfile() {
         return $this->extractPlist('embedded.mobileprovision');
     }
@@ -90,4 +95,5 @@ class IPAPackage {
     public function extractInfo() {
         return $this->extractPlist('Info.plist', CFPropertyList::FORMAT_BINARY);
     }
+
 }
