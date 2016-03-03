@@ -6,6 +6,18 @@ use CFPropertyList\CFTypeDetector;
 use Symfony\Component\HttpFoundation\Response;
 
 class AppleResponseFactory {
+    public static function createIpaDownloadResponse($filename) {
+        $response = new Response();
+
+        $response->headers->set('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
+        $response->headers->set('Pragma', 'no-cache');
+        $response->headers->set('Content-Type', 'application/octet-stream');
+
+        $response->setContent(file_get_contents($filename));
+
+        return $response;
+    }
+
     /**
      * @return Response
      * @throws \CFPropertyList\PListException
