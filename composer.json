@@ -15,6 +15,7 @@
     }
   ],
   "require": {
-    "rodneyrehm/plist": "^2.0"
+    "rodneyrehm/plist": "^2.0",
+    "symfony/http-foundation": "~3.0"
   }
 }
