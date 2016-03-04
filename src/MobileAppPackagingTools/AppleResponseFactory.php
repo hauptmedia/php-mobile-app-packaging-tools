@@ -3,9 +3,25 @@ namespace MobileAppPackagingTools;
 
 use CFPropertyList\CFPropertyList;
 use CFPropertyList\CFTypeDetector;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 class AppleResponseFactory {
+    /**
+     * @param $manifestUrl
+     * @return RedirectResponse
+     */
+    public static function createDownloadManifestResponse($manifestUrl)
+    {
+        return new RedirectResponse(
+            'itms-services://?action=download-manifest&url=' . $manifestUrl
+        );
+    }
+
+    /**
+     * @param $filename
+     * @return Response
+     */
     public static function createIpaDownloadResponse($filename) {
         $response = new Response();
 
