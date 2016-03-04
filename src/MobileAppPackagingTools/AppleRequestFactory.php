@@ -9,12 +9,14 @@ use Symfony\Component\HttpFoundation\Response;
 class AppleRequestFactory {
     /**
      * @param Request $request
-     * @return CFPropertyList|null
+     * @return AppleProfileResponse|null
      * @throws \CFPropertyList\IOException
      * @throws \CFPropertyList\PListException
      * @throws \DOMException
      */
     public static function parseProfileRequest(Request $request) {
+        $response = new AppleProfileResponse();
+
         $data = $request->getContent();
 
         $plistBegin   = '<?xml version="1.0"';
@@ -30,9 +32,10 @@ class AppleRequestFactory {
         if($pos1 !== false && $pos2 !== false) {
             $plist = new CFPropertyList();
             $plist->parse($plistData, CFPropertyList::FORMAT_XML);
+            $response->setData($plist->toArray());
         }
 
-        return $plist;
+        return $response;
     }
 
 
