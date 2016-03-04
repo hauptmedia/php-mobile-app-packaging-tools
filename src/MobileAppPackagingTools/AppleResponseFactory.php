@@ -64,7 +64,7 @@ class AppleResponseFactory {
      * @return Response
      * @throws \CFPropertyList\PListException
      */
-    public static function createProfileRequest(AppleProfileRequest $profileRequest) {
+    public static function createProfileRequestResponse(AppleProfileRequest $profileRequest) {
         $response   = new Response();
         $plist      = new CFPropertyList();
 
@@ -87,7 +87,7 @@ class AppleResponseFactory {
         $plist->add( $guessedStructure );
 
         $response->headers->set('Content-Type', 'application/x-apple-aspen-config; charset=utf-8');
-        $response->headers->set('Content-Disposition', 'attachment; filename="profile.mobileconfig"');
+        $response->headers->set('Content-Disposition', 'attachment; filename="profilerequest.mobileconfig"');
         $response->setContent($plist->toXML(true));
 
         return $response;
